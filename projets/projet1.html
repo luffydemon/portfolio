@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jeu du Snake en C - Projet de programmation incrémentale développé en 4 versions">
+    <title>Jeu du Snake en C - Mon Portfolio</title>
+    
+    <!-- Polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #0a6e9d;
+            --secondary-color: #00a8cc;
+            --dark-color: #003559;
+            --light-color: #e8f4f8;
+            --text-color: #1d3557;
+            --text-light: #456283;
+            --accent-color: #ff7c43;
+            --shadow-sm: 0 2px 4px rgba(3, 46, 87, 0.1);
+            --shadow-md: 0 4px 8px rgba(3, 46, 87, 0.15);
+            --shadow-lg: 0 8px 16px rgba(3, 46, 87, 0.2);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 8rem;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(232, 244, 248, 0.95);
+            box-shadow: var(--shadow-sm);
+            padding: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 1.6rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        /* Project Banner */
+        .project-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 20 Q25 0 50 10 T100 5 V20 Z' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E") repeat-x;
+            background-size: 200px 40px;
+            animation: wave 4s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 200px; }
+        }
+
+        .project-title {
+            font-size: 3.6rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .project-category {
+            font-size: 1.8rem;
+            opacity: 0.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Main Content */
+        .project-content {
+            padding: 6rem 0;
+            background-color: white;
+            min-height: 50vh;
+        }
+
+        .project-gallery {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto var(--spacing-md);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(45deg, var(--light-color), white);
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 150px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--light-color);
+            border: 3px solid transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .project-description {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-description h2 {
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .project-description h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 2.4rem;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .project-description p {
+            font-size: 1.7rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+        }
+
+        .project-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .column {
+            background: var(--light-color);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .column h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 1rem 0;
+            position: relative;
+            padding-left: 2.5rem;
+            border-bottom: 1px solid rgba(10, 110, 157, 0.1);
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .feature-list li:hover {
+            background: rgba(10, 110, 157, 0.05);
+            padding-left: 3rem;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .feature-list li:hover::before {
+            content: '✓';
+            color: var(--accent-color);
+        }
+
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(10, 110, 157, 0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--accent-color);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.8rem;
+        }
+
+        .feature-card p {
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tech-item:hover::before {
+            left: 100%;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.4rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 1.5rem;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .project-links {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        /* Navigation */
+        .project-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--light-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-prev, .nav-next, .nav-all {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2rem;
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+
+        .nav-prev:hover, .nav-next:hover, .nav-all:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            padding: var(--spacing-md) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 0 Q25 20 50 10 T100 15 V0 Z' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E") repeat-x;
+            background-size: 200px 40px;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .back-to-top a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-to-top a:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-list {
+                display: none;
+            }
+
+            .project-banner {
+                padding: 6rem 0 4rem;
+            }
+
+            .project-title {
+                font-size: 2.8rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .gallery-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-prev, .nav-next, .nav-all {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-thumbnails {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .project-description h2 {
+                font-size: 2rem;
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Maël<span>Portfolio</span></a>
+            </div>
+            <nav class="navigation">
+                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="../index.html#a-propos" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="../index.html#formation" class="nav-link">Formation</a></li>
+                    <li class="nav-item"><a href="../index.html#competences-but" class="nav-link">Compétences BUT</a></li>
+                    <li class="nav-item"><a href="../index.html#competences-tech" class="nav-link">Technologies</a></li>
+                    <li class="nav-item"><a href="../index.html#projets" class="nav-link active">Projets</a></li>
+                    <li class="nav-item"><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bannière du projet -->
+    <section class="project-banner">
+        <div class="container">
+            <h1 class="project-title">🐍 Jeu du Snake en C</h1>
+            <p class="project-category">Programmation Algorithmique</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Semestre 1 - 2024</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tag"></i>
+                    <span>Langage C • Algorithmes • Console</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>SAÉ S1.01 - IUT Lannion</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal du projet -->
+    <main class="project-content">
+        <div class="container">
+            <!-- Galerie d'images -->
+            <div class="project-gallery">
+                <div class="main-image">
+                    <img src="../images/projets/projet1/snake.png" alt="Jeu Snake - Vue principale">
+                </div>
+            </div>
+
+            <!-- Description du projet -->
+            <div class="project-description">
+                <h2>📋 À propos du projet</h2>
+                <p>Ce projet constitue ma première SAÉ (Situation d'Apprentissage et d'Évaluation) en première année de BUT Informatique. Il s'agit d'une implémentation complète du jeu classique Snake en langage C, développée de manière incrémentale en 4 versions successives. Chaque version ajoute de nouvelles fonctionnalités et complexifie le gameplay, permettant un apprentissage progressif des concepts fondamentaux de la programmation.</p>
+
+                <h2>🎓 Contexte académique</h2>
+                <p>Développé dans le cadre de la SAÉ S1.01 "Implémentation d'un besoin client" pour l'association fictive "Les têtes à clic", ce projet simule une situation professionnelle réelle où il faut développer un jeu éducatif pour enfants. L'objectif est de créer une version console du Snake, accessible et ludique, tout en respectant les contraintes techniques du langage C.</p>
+
+                <div class="project-columns">
+                    <div class="column">
+                        <h2>⚠️ Défis techniques rencontrés</h2>
+                        <ul class="feature-list">
+                            <li>Gestion de la mémoire et des tableaux dynamiques en C</li>
+                            <li>Implémentation d'une boucle de jeu en temps réel</li>
+                            <li>Détection de collisions avec obstacles et auto-collision</li>
+                            <li>Gestion des entrées clavier non-bloquantes</li>
+                            <li>Optimisation des performances d'affichage console</li>
+                            <li>Génération aléatoire sécurisée des positions</li>
+                            <li>Architecture modulaire avec procédures spécialisées</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h2>✅ Solutions développées</h2>
+                        <ul class="feature-list">
+                            <li>Structures de données optimisées pour le serpent</li>
+                            <li>Système de temporisation avec usleep()</li>
+                            <li>Algorithmes de détection de collision efficaces</li>
+                            <li>Interface utilisateur responsive en mode console</li>
+                            <li>Optimisation de l'affichage par effacement sélectif</li>
+                            <li>Validation robuste des positions générées</li>
+                            <li>Code modulaire respectant les conventions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Évolution des versions -->
+                <h2>🚀 Développement incrémental en 4 versions</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Version 1 - Fondations</h3>
+                        <p>Serpent de taille fixe (10 éléments) se déplaçant vers la droite. Position initiale saisie par l'utilisateur. Arrêt sur appui de la touche 'a'. Apprentissage des bases : tableaux, boucles, affichage console avec gotoXY().</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-arrows-alt"></i>
+                        </div>
+                        <h3>Version 2 - Interactivité</h3>
+                        <p>Ajout du contrôle directionnel (QZSD). Interdiction du demi-tour pour éviter l'auto-collision immédiate. Autorisation du croisement temporaire. Gestion des entrées clavier en temps réel avec kbhit() et désactivation de l'écho.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <h3>Version 3 - Complexité</h3>
+                        <p>Plateau délimité 80x40 avec bordures '#'. Ajout de 4 pavés d'obstacles 5x5 positionnés aléatoirement sans être collés aux bords. Détection de collision avec bordures, obstacles et auto-collision. Game over sur collision.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Version 4 - Gameplay complet</h3>
+                        <p>Système de pommes ('6') apparaissant aléatoirement sur cases libres. Croissance du serpent et accélération à chaque pomme mangée. Sorties dans les bordures permettant la téléportation côté opposé. Victoire à 10 pommes.</p>
+                    </div>
+                </div>
+
+                <h2>🔧 Architecture technique</h2>
+                <p>Le projet utilise une approche modulaire avec des procédures spécialisées pour chaque aspect du jeu. La représentation du serpent utilise soit deux tableaux séparés (X et Y), soit un tableau bidimensionnel, permettant une gestion efficace des coordonnées et des mouvements.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Affichage Console</h3>
+                        <p><code>afficher()</code>, <code>effacer()</code>, <code>dessinerPlateau()</code> - Gestion complète de l'interface console avec positionnement précis du curseur et optimisation des performances.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Logique de Jeu</h3>
+                        <p><code>progresser()</code>, <code>dessinerSerpent()</code> - Cœur du gameplay avec gestion des mouvements, détection des collisions et application des règles du jeu en temps réel.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3>Génération Aléatoire</h3>
+                        <p><code>initPlateau()</code>, <code>ajouterPomme()</code> - Initialisation du terrain de jeu et placement aléatoire sécurisé des éléments avec validation des positions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Validation & Sécurité</h3>
+                        <p>Fonctions de vérification des collisions, validation des entrées utilisateur, contrôle de l'intégrité du jeu et gestion robuste des cas d'erreur.</p>
+                    </div>
+                </div>
+
+                <!-- Technologies utilisées -->
+                <h2>🛠️ Technologies et outils utilisés</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">Langage C</div>
+                    <div class="tech-item">GCC Compiler</div>
+                    <div class="tech-item">Terminal Linux</div>
+                    <div class="tech-item">Fonctions système</div>
+                    <div class="tech-item">Algorithmes</div>
+                    <div class="tech-item">Structures de données</div>
+                    <div class="tech-item">Gestion mémoire</div>
+                    <div class="tech-item">Débogage GDB</div>
+                </div>
+
+                <!-- Compétences développées -->
+                <h2>🎯 Compétences BUT développées</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">Développement d'application</div>
+                    <div class="tech-item">Optimisation algorithmique</div>
+                    <div class="tech-item">Gestion de projet</div>
+                    <div class="tech-item">Tests et validation</div>
+                    <div class="tech-item">Documentation technique</div>
+                    <div class="tech-item">Travail en autonomie</div>
+                    <div class="tech-item">Respect des conventions</div>
+                    <div class="tech-item">Analyse de problèmes</div>
+                </div>
+
+                <h2>📊 Méthodes de développement</h2>
+                <p>Le projet suit une méthodologie rigoureuse avec développement incrémental, tests à chaque étape, et documentation complète. Chaque version fait l'objet d'un cahier de tests détaillé et d'une validation fonctionnelle avant passage à la version suivante.</p>
+
+                <div class="project-columns">
+                    <div class="column">
+                        <h2>✅ Objectifs atteints</h2>
+                        <ul class="feature-list">
+                            <li>Compilation sans erreur ni warning sur GCC</li>
+                            <li>Fonctionnalités conformes aux spécifications</li>
+                            <li>Respect strict des conventions de codage R1.01</li>
+                            <li>Documentation complète et commentaires explicites</li>
+                            <li>Cahier de tests exhaustif pour chaque version</li>
+                            <li>Performance optimisée pour l'affichage console</li>
+                            <li>Architecture modulaire et maintenable</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h2>🔄 Perspectives d'amélioration</h2>
+                        <ul class="feature-list">
+                            <li>Interface graphique avec bibliothèque SDL2</li>
+                            <li>Système de niveaux progressifs avec difficulté</li>
+                            <li>Sauvegarde des meilleurs scores en fichier</li>
+                            <li>Mode multijoueur local avec deux serpents</li>
+                            <li>Effets sonores et animations visuelles</li>
+                            <li>Configuration personnalisable du gameplay</li>
+                            <li>Portage vers d'autres plateformes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>💡 Résultats et apprentissages</h2>
+                <p>Ce projet m'a permis de maîtriser les fondamentaux de la programmation C et de comprendre l'importance de l'architecture logicielle. L'approche incrémentale m'a enseigné la valeur de la planification et de la modularité dans le développement. J'ai également développé des compétences cruciales en débogage, optimisation et tests, essentielles pour créer des applications robustes et performantes.</p>
+
+                <p>Cette première expérience de développement d'un projet complet m'a donné confiance pour aborder des défis plus complexes et m'a fait découvrir ma passion pour la programmation système et algorithmique.</p>
+
+                <!-- Liens du projet -->
+                <div class="project-links">
+                    <div style="background: var(--light-color); padding: 2rem; border-radius: var(--border-radius); margin-bottom: 2rem; text-align: center; border-left: 4px solid var(--accent-color);">
+                        <h3 style="color: var(--accent-color); margin-bottom: 1rem;">
+                            <i class="fas fa-clock"></i> Sources en cours de préparation
+                        </h3>
+                        <p style="font-size: 1.4rem; color: var(--text-light);">
+                            Le code source et la documentation de ce projet seront bientôt disponibles publiquement sur GitHub une fois organisés et documentés selon les standards professionnels.
+                        </p>
+                    </div>
+                    <a href="../index.html#projets" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i> Retour aux projets
+                    </a>
+                    <a href="../index.html#contact" class="btn btn-secondary" style="margin-left: 1rem;">
+                        <i class="fas fa-envelope"></i> Me contacter pour plus d'infos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation entre projets -->
+            <div class="project-navigation">
+                <a href="#" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Projet précédent</span>
+                </a>
+                <a href="../index.html#projets" class="nav-all">
+                    <i class="fas fa-th"></i>
+                    <span>Tous les projets</span>
+                </a>
+                <a href="#" class="nav-next">
+                    <span>Gestionnaire de Tâches Java</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Maël Le Bourhis - Étudiant BUT Informatique IUT Lannion. Tous droits réservés.</p>
+            </div>
+            <div class="back-to-top">
+                <a href="#" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript minimal pour les interactions de base -->
+    <script>
+        // Gestion simple du menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navList = document.querySelector('.nav-list');
+            
+            if (menuToggle && navList) {
+                menuToggle.addEventListener('click', function() {
+                    navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+
+            // Changement d'image principale au clic sur miniatures
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.querySelector('.main-image img');
+            
+            if (mainImage && thumbnails.length > 0) {
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        // Retirer la classe active de toutes les miniatures
+                        thumbnails.forEach(t => t.style.borderColor = 'transparent');
+                        // Ajouter la classe active à la miniature cliquée
+                        this.style.borderColor = 'var(--primary-color)';
+                        // Changer l'image principale
+                        mainImage.src = this.src;
+                        mainImage.alt = this.alt;
+                    });
+                });
+            }
+
+            // Animation de scroll vers le haut
+            const backToTop = document.querySelector('.back-to-top a');
+            if (backToTop) {
+                backToTop.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Animation d'apparition au scroll (simple)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer les cartes de fonctionnalités
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

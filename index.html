@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Maël Le Bourhis - Étudiant en BUT Informatique à l'IUT de Lannion">
+    <title>Maël Le Bourhis - Portfolio BUT Informatique</title>
+    
+    <!-- CSS - Nouvelle structure modulaire -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Maël<span>Portfolio</span></a>
+            </div>
+            <nav class="navigation">
+                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#accueil" class="nav-link active">Accueil</a></li>
+                    <li class="nav-item"><a href="#a-propos" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="#formation" class="nav-link">Formation</a></li>
+                    <li class="nav-item"><a href="#competences-but" class="nav-link">Compétences BUT</a></li>
+                    <li class="nav-item"><a href="#competences-tech" class="nav-link">Technologies</a></li>
+                    <li class="nav-item"><a href="#projets" class="nav-link">Projets</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section d'accueil -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bonjour, je suis <span class="highlight">Maël Le Bourhis</span></h1>
+                <h2>Étudiant en BUT Informatique</h2>
+                <p>Passionné par le développement logiciel, je suis actuellement en 1ère année de BUT Informatique à l'IUT de Lannion.</p>
+                <div class="hero-buttons">
+                    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <img src="images/profil/mael-profil.png" 
+                        alt="Photo de profil de Maël Le Bourhis" 
+                        class="profile-image"
+                        onerror="this.src='images/profil/placeholder.jpg'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section à propos -->
+    <section id="a-propos" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">À propos de moi</h2>
+                <p class="section-subtitle">Mon parcours et mes objectifs</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Maël Le Bourhis</h3>
+                            <p class="profile-title">Étudiant BUT Informatique</p>
+                            <p class="profile-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lannion, Bretagne
+                            </p>
+                            <div class="profile-status">
+                                <span class="status-badge">
+                                    <i class="fas fa-search"></i>
+                                    Recherche alternance
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-download-card">
+                        <div class="cv-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="cv-info">
+                            <h4>Mon CV complet</h4>
+                            <p>Découvrez mon parcours détaillé</p>
+                            <a href="telechargement/CV_mael_le_bourhis.pdf" class="btn btn-primary" download="CV_Mael_Le_Bourhis.pdf">
+                                <i class="fas fa-download"></i> Télécharger le CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <div class="intro-text">
+                        <h3>Développeur en devenir, passionné par l'informatique</h3>
+                        <p class="lead">Actuellement en 1ère année de BUT Informatique à l'IUT de Lannion, je découvre avec enthousiasme les multiples facettes du développement logiciel. Mon parcours m'a déjà permis d'acquérir des bases solides en programmation et en conception d'applications.</p>
+                    </div>
+                    
+                    <div class="description-text">
+                        <p>Je suis particulièrement attiré par le développement logiciel. Mon objectif est d'approfondir mes compétences techniques tout en développant une vision globale des projets informatiques.</p>
+                    </div>
+                    
+                    <div class="objectives-section">
+                        <h4><i class="fas fa-bullseye"></i> Mes objectifs professionnels</h4>
+                        <div class="objectives-grid">
+                            <div class="objective-item">
+                                <div class="objective-icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <div class="objective-content">
+                                    <h5>Court terme</h5>
+                                    <p>Trouver une alternance en développement pour ma 2ème année de BUT</p>
+                                </div>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="objective-content">
+                                    <h5>Moyen terme</h5>
+                                    <p>Me spécialiser en développement logiciel </p>
+                                </div>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="objective-content">
+                                    <h5>Long terme</h5>
+                                    <p>Devenir développeur dans du logiciel ou du jeux vidéo </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-quick">
+                        <h4><i class="fas fa-address-card"></i> Informations de contact</h4>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <span>Email</span>
+                                    <p>mael.lebourhis@etudiant.univ-rennes1.fr</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <span>Formation</span>
+                                    <p>BUT Informatique - IUT Lannion</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <span>Recherche</span>
+                                    <p>Alternance développement - 2ème année</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span>Localisation</span>
+                                    <p>Lannion, Bretagne</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Formation -->
+    <section id="formation" class="formation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Formation & Diplômes</h2>
+                <p class="section-subtitle">Mon parcours académique</p>
+            </div>
+            <div class="formation-timeline">
+                <div class="timeline-item current">
+                    <div class="timeline-date">2024 - 2027</div>
+                    <div class="timeline-content">
+                        <h3>BUT Informatique (en cours)</h3>
+                        <h4>IUT de Lannion - Université de Rennes</h4>
+                        <p>Formation en 3 ans axée sur le développement logiciel, l'administration systèmes, la gestion de données et la conduite de projets informatiques.</p>
+                        <div class="formation-links">
+                            <a href="https://iut-lannion.univ-rennes.fr/" class="btn btn-secondary">
+                                <i class="fas fa-university"></i> Site IUT Lannion
+                            </a>
+                            <a href="https://iut-lannion.univ-rennes.fr/informatique" class="btn btn-secondary">
+                                <i class="fas fa-code"></i> Programme BUT Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Général</h3>
+                        <h4>Spécialités : Mathématiques & Numérique et Sciences Informatiques</h4>
+                        <p>Formation solide en mathématiques et première approche de la programmation avec Python.</p>
+                        <div class="specialites">
+                            <span class="specialite">Mathématiques</span>
+                            <span class="specialite">NSI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section Compétences BUT  -->
+    <section id="competences-but" class="competences-but">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Compétences BUT Informatique</h2>
+                <p class="section-subtitle">Les 6 compétences du référentiel BUT</p>
+            </div>
+            <div class="competences-grid">
+                <!-- Compétence 1 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 1</h3>
+                            <h4>Réaliser un développement d'application</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Développer des applications informatiques simples en utilisant des langages de programmation appropriés.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="35%" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Programmation en Python et Java</li>
+                                <li>Concepts de base de la POO</li>
+                                <li>Développement d'interfaces graphiques simples</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 2 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 2</h3>
+                            <h4>Optimiser des applications informatiques</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Appréhender et construire des algorithmes efficaces pour optimiser les performances des applications.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="30%" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Analyse de la complexité algorithmique</li>
+                                <li>Structures de données de base</li>
+                                <li>Optimisation de code simple</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 3 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 3</h3>
+                            <h4>Administrer des systèmes informatiques communicants</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Installer, configurer et dépanner des systèmes informatiques dans des contextes d'entreprise.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="25%" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Bases de l'administration Linux</li>
+                                <li>Configuration réseau simple</li>
+                                <li>Installation de services web</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 4 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 4</h3>
+                            <h4>Gérer des données de l'information</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Concevoir et exploiter des bases de données et optimiser les données d'un système d'information.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="15%" style="width: 15%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Modélisation de bases de données</li>
+                                <li>Requêtes SQL simples et complexes</li>
+                                <li>Normalisation des données</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 5 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 5</h3>
+                            <h4>Conduire un projet</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Identifier les besoins métiers des clients et y apporter des réponses informatiques adaptées.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="25%" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Gestion de projet Agile (Scrum)</li>
+                                <li>Analyse des besoins utilisateurs</li>
+                                <li>Planification et suivi de projet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 6 -->
+                <div class="competence-card">
+                    <div class="competence-header">
+                        <div class="competence-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="competence-title">
+                            <h3>Compétence 6</h3>
+                            <h4>Travailler dans une équipe informatique</h4>
+                        </div>
+                    </div>
+                    <div class="competence-content">
+                        <p class="competence-description">Acquérir, développer et mobiliser ses aptitudes pour travailler efficacement dans une équipe informatique.</p>
+                        <div class="niveau-competence">
+                            <span class="niveau">Niveau : Débutant</span>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="40%" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="acquis-section">
+                            <ul class="acquis-list">
+                                <li>Travail collaboratif </li>
+                                <li>Communication technique</li>
+                                <li>Participation aux projets de groupe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences Techniques -->
+    <section id="competences-tech" class="competences-tech">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technologies & Outils</h2>
+                <p class="section-subtitle">Mes compétences techniques</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Programmation orientée objet, scripts, automatisation</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3>Java</h3>
+                    <p>Applications desktop, POO, JavaFX</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML/CSS</h3>
+                    <p>Développement web, responsive design</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Interactivité web, DOM, événements</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>SQL</h3>
+                    <p>Bases de données, requêtes, modélisation</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>Contrôle de version, collaboration</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <h3>Linux</h3>
+                    <p>Administration système, ligne de commande</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Réseaux</h3>
+                    <p>Configuration, dépannage, protocoles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section projets -->
+    <section id="projets" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes projets</h2>
+                <p class="section-subtitle">Réalisations académiques et personnelles</p>
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="C">C</button>
+                <button class="filter-btn" data-filter="java">java</button>
+                <button class="filter-btn" data-filter="bdd">Base de données</button>
+            </div>
+            <div class="projects-grid"> 
+                <div class="project-card" data-category="C">
+                    <div class="project-image">
+                        <img src="./images/projets/projet1/snake.png" alt="Jeu Snake - Vue principale">
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-info">
+                            <h3>Snake "le premier projet"</h3>
+                            <p>Langage C, Algorithmes, Console</p>
+                            <div class="project-links">
+                                <a href="projets/projet1.html" class="project-link"><i class="fas fa-search"></i></a>
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="./images/profil/update.png" alt="Portfolio Web">
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-info">
+                            <h3>Portfolio Personnel</h3>
+                            <p>HTML5, CSS3, JavaScript</p>
+                            <div class="project-links">
+                                <a href="projets/projet2.html" class="project-link"><i class="fas fa-search"></i></a>
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="java">
+                    <div class="project-image">
+                        <img src="./images/profil/update.png" alt="Ellapli">
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-info">
+                            <h3>Analyseur de Données</h3>
+                            <p>java, JavaFX, FXML</p>
+                            <div class="project-links">
+                                <a href="projets/projet3.html" class="project-link"><i class="fas fa-search"></i></a>
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="bdd">
+                    <div class="project-image">
+                        <img src="./images/profil/update.png" alt="Projet BDD">
+                    </div>
+                    <div class="project-overlay">
+                        <div class="project-info">
+                            <h3>Système de Gestion Bibliothèque</h3>
+                            <p>MySQL, PHP, HTML/CSS</p>
+                            <div class="project-links">
+                                <a href="projets/projet4.html" class="project-link"><i class="fas fa-search"></i></a>
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Me contacter</h2>
+                <p class="section-subtitle">Discutons de votre projet ou d'une opportunité d'alternance</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Email</h3>
+                            <p>mael.lebourhis@etudiant.univ-rennes1.fr</p>
+                            <p>( mail universitaire )</p>
+                            <p>je conseil la zone de contact pour</p>
+                            <p>ne pas tomber dans mes spam</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Téléphone</h3>
+                            <p>+33 7 87 86 93 82</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Localisation</h3>
+                            <p>Lannion / Quimper</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="details">
+                            <h3>Recherche</h3>
+                            <p>Alternance en développement </p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" id="subject" placeholder="Sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Maël Le Bourhis - Étudiant BUT Informatique IUT Lannion. Tous droits réservés.</p>
+            </div>
+            <div class="back-to-top">
+                <a href="#accueil" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript - Nouvelle structure modulaire -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+</body>

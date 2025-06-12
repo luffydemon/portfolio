@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails du projet (à remplir)">
+    <title>(Titre du projet à remplir) - Mon Portfolio</title>
+    
+    <!-- CSS - Chemins pour dossier racine -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Maël<span>Portfolio</span></a>
+            </div>
+            <nav class="navigation">
+                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#accueil" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="index.html#a-propos" class="nav-link">À propos</a></li>
+                    <li class="nav-item"><a href="index.html#formation" class="nav-link">Formation</a></li>
+                    <li class="nav-item"><a href="index.html#competences-but" class="nav-link">Compétences BUT</a></li>
+                    <li class="nav-item"><a href="index.html#competences-tech" class="nav-link">Technologies</a></li>
+                    <li class="nav-item"><a href="index.html#projets" class="nav-link active">Projets</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bannière du projet -->
+    <section class="project-banner">
+        <div class="container">
+            <h1 class="project-title">Mon Premier Projet Web</h1>
+            <p class="project-category">Développement Web</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Novembre 2024</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tag"></i>
+                    <span>HTML, CSS, JavaScript</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal du projet -->
+    <main class="project-content">
+        <div class="container">
+            <!-- Galerie d'images -->
+            <div class="project-gallery">
+                <div class="main-image">
+                    <img src="https://via.placeholder.com/1200x600/0a6e9d/ffffff?text=Image+Principale+du+Projet" alt="Mon Premier Projet Web - Vue principale">
+                </div>
+                <div class="gallery-thumbnails">
+                    <img src="https://via.placeholder.com/400x300/00a8cc/ffffff?text=Aperçu+1" alt="Mon Premier Projet Web - Aperçu 1" class="thumbnail" tabindex="0">
+                    <img src="https://via.placeholder.com/400x300/ff7c43/ffffff?text=Aperçu+2" alt="Mon Premier Projet Web - Aperçu 2" class="thumbnail" tabindex="0">
+                    <img src="https://via.placeholder.com/400x300/003559/ffffff?text=Aperçu+3" alt="Mon Premier Projet Web - Aperçu 3" class="thumbnail" tabindex="0">
+                </div>
+            </div>
+
+            <!-- Description du projet -->
+            <div class="project-description">
+                <h2>À propos du projet</h2>
+                <p>Ce projet représente ma première incursion dans le développement web moderne. J'ai créé un site web responsive utilisant les dernières technologies HTML5, CSS3 et JavaScript ES6. Le projet m'a permis d'apprendre les fondamentaux du développement front-end et de comprendre l'importance d'une bonne expérience utilisateur.</p>
+
+                <h2>Objectifs</h2>
+                <p>L'objectif principal était de créer un site web professionnel et moderne qui démontre mes compétences en développement front-end. Je voulais également m'assurer que le site soit entièrement responsive et accessible sur tous les appareils.</p>
+
+                <div class="project-columns">
+                    <div class="column">
+                        <h2>Défis rencontrés</h2>
+                        <ul class="feature-list">
+                            <li>Comprendre le responsive design et les media queries</li>
+                            <li>Gérer la compatibilité entre différents navigateurs</li>
+                            <li>Optimiser les performances et le temps de chargement</li>
+                            <li>Implémenter des animations fluides sans impacter les performances</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h2>Solutions apportées</h2>
+                        <ul class="feature-list">
+                            <li>Utilisation d'un design mobile-first avec flexbox et grid</li>
+                            <li>Tests approfondis sur Chrome, Firefox, Safari et Edge</li>
+                            <li>Compression des images et minification du code</li>
+                            <li>Utilisation de CSS transforms et transitions optimisées</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Fonctionnalités principales</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Design Responsive</h3>
+                        <p>Interface adaptative qui s'ajuste parfaitement à tous les types d'écrans, du mobile au desktop.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Interface Moderne</h3>
+                        <p>Design épuré et professionnel avec une palette de couleurs harmonieuse et des typographies soignées.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Animations Fluides</h3>
+                        <p>Micro-interactions et animations CSS qui améliorent l'expérience utilisateur sans compromettre les performances.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-universal-access"></i>
+                        </div>
+                        <h3>Accessibilité</h3>
+                        <p>Respect des standards WCAG pour une navigation accessible à tous les utilisateurs.</p>
+                    </div>
+                </div>
+
+                <!-- Technologies utilisées -->
+                <h2>Technologies utilisées</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">HTML5</div>
+                    <div class="tech-item">CSS3</div>
+                    <div class="tech-item">JavaScript ES6</div>
+                    <div class="tech-item">Flexbox</div>
+                    <div class="tech-item">CSS Grid</div>
+                    <div class="tech-item">Font Awesome</div>
+                </div>
+
+                <!-- Compétences développées -->
+                <h2>Compétences développées</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">Responsive Design</div>
+                    <div class="tech-item">Optimisation Performance</div>
+                    <div class="tech-item">Accessibilité Web</div>
+                    <div class="tech-item">UX/UI Design</div>
+                    <div class="tech-item">Cross-browser Testing</div>
+                    <div class="tech-item">Version Control Git</div>
+                </div>
+
+                <!-- Résultats et apprentissages -->
+                <h2>Résultats et apprentissages</h2>
+                <p>Ce projet m'a permis d'acquérir une solide foundation en développement web moderne. J'ai appris l'importance de la planification, du design responsive et de l'optimisation des performances. Cette expérience m'a donné confiance pour aborder des projets plus complexes et m'a fait découvrir ma passion pour le développement front-end.</p>
+
+                <!-- Liens du projet -->
+                <div class="project-links" style="margin-top: 4rem;">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Voir le projet en ligne
+                    </a>
+                    <a href="#" class="btn btn-secondary" style="margin-left: 1rem;">
+                        <i class="fab fa-github"></i> Code source
+                    </a>
+                    <a href="index.html#projets" class="btn btn-secondary" style="margin-left: 1rem;">
+                        <i class="fas fa-arrow-left"></i> Retour aux projets
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation entre projets -->
+            <div class="project-navigation">
+                <a href="#" class="nav-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Projet précédent</span>
+                </a>
+                <a href="index.html#projets" class="nav-all">
+                    <i class="fas fa-th"></i>
+                    <span>Tous les projets</span>
+                </a>
+                <a href="#" class="nav-next">
+                    <span>Projet suivant</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Maël Le Bourhis - Étudiant BUT Informatique IUT Lannion. Tous droits réservés.</p>
+            </div>
+            <div class="back-to-top">
+                <a href="#" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript - Chemins pour dossier racine -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/projet.js"></script>
+</body>
+</html>

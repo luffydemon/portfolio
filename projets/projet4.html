@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page en construction - Portfolio de Maël Le Bourhis">
+    <title>Page en Construction - Mon Portfolio</title>
+    
+    <!-- Police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0a6e9d;
+            --secondary-color: #00a8cc;
+            --accent-color: #ff7c43;
+            --dark-color: #003559;
+            --light-color: #e8f4f8;
+            --text-color: #1d3557;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light-color) 0%, rgba(232, 244, 248, 0.8) 50%, white 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animation d'arrière-plan */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(10, 110, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 168, 204, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(5deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        .construction-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem 2rem;
+        }
+
+        .construction-icon {
+            font-size: 8rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+
+        .progress-label {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: rgba(10, 110, 157, 0.2);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50px;
+            width: 0%;
+            animation: fillProgress 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes fillProgress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 0%; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(10, 110, 157, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .feature-text {
+            font-size: 1.3rem;
+            color: var(--text-color);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: inherit;
+            border: none;
+            font-size: 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(10, 110, 157, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(10, 110, 157, 0.3);
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(10, 110, 157, 0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .contact-title {
+            font-size: 1.6rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            color: var(--text-color);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Effets de particules */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particle-float 15s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .construction-container {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .construction-icon {
+                font-size: 6rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .construction-icon {
+                font-size: 5rem;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules d'arrière-plan -->
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+
+    <div class="construction-container">
+        <!-- Icône principale -->
+        <div class="construction-icon">
+            <i class="fas fa-tools"></i>
+        </div>
+
+        <!-- Titre principal -->
+        <h1>Page en Construction</h1>
+        <p class="subtitle">Projet en cours de développement</p>
+
+        <!-- Description -->
+        <p class="description">
+            Cette page est actuellement en cours de développement. Je travaille activement sur ce projet pour vous offrir une expérience exceptionnelle. Revenez bientôt pour découvrir le résultat final !
+        </p>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <p class="progress-label">Progression du développement</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <!-- Fonctionnalités à venir -->
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-code feature-icon"></i>
+                <span class="feature-text">Développement des fonctionnalités principales</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-paint-brush feature-icon"></i>
+                <span class="feature-text">Design et interface utilisateur</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <span class="feature-text">Optimisation responsive</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-rocket feature-icon"></i>
+                <span class="feature-text">Tests et déploiement</span>
+            </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="cta-buttons">
+            <a href="../index.html" class="btn btn-primary">
+                <i class="fas fa-home"></i>
+                Retour à l'accueil
+            </a>
+            <a href="../index.html#projets" class="btn btn-secondary">
+                <i class="fas fa-folder-open"></i>
+                Voir mes autres projets
+            </a>
+        </div>
+
+        <!-- Informations de contact -->
+        <div class="contact-info">
+            <h3 class="contact-title">Une question ? Contactez-moi !</h3>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>mael.lebourhis@etudiant.univ-rennes1.fr</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Mise à jour prévue : Bientôt</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Étudiant BUT Informatique - IUT Lannion</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation de défilement de la barre de progression
+        document.addEventListener('DOMContentLoaded', function() {
+            const progress = document.querySelector('.progress');
+            
+            // Animation initiale
+            setTimeout(() => {
+                progress.style.width = '65%';
+            }, 1000);
+            
+            // Animation continue
+            setInterval(() => {
+                progress.style.width = '0%';
+                setTimeout(() => {
+                    progress.style.width = '65%';
+                }, 500);
+            }, 5000);
+        });
+
+        // Création dynamique de particules supplémentaires
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(particle);
+            
+            // Supprimer la particule après l'animation
+            setTimeout(() => {
+                particle.remove();
+            }, 25000);
+        }
+
+        // Créer des particules périodiquement
+        setInterval(createParticle, 3000);
+
+        // Animation des éléments de fonctionnalités
+        const featureItems = document.querySelectorAll('.feature-item');
+        featureItems.forEach((item, index) => {
+            item.style.animationDelay = index * 0.2 + 's';
+            item.style.animation = 'slideIn 0.6s ease forwards';
+        });
+
+        // CSS pour l'animation slideIn
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Effet de survol sur les boutons
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* 
+ * Correctifs CSS pour résoudre les problèmes d'affichage dans viewportBASE.html
+ * Ce fichier contient des correctifs spécifiques pour garantir un affichage stable
+ */
+
+/* Corrections pour la bannière du projet */
+.project-banner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 20vh; /* Assure une hauteur minimale */
+}
+
+/* Correction pour l'image principale */
+.main-image {
+    width: 100%;
+    height: auto !important; /* Force la hauteur auto pour éviter les problèmes */
+    min-height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    background-color: var(--light-color); /* Couleur de fond en attendant le chargement */
+}
+
+.main-image img {
+    width: 100%;
+    height: auto !important; /* Force la hauteur auto */
+    object-fit: contain !important; /* Changé de 'cover' à 'contain' pour un meilleur affichage */
+    transition: transform 0.5s ease;
+    display: block; /* Assure que l'image se comporte comme un bloc */
+}
+
+/* Corrections pour les miniatures */
+.gallery-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem; /* Espace supplémentaire */
+}
+
+.thumbnail {
+    width: 100%;
+    height: 180px;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--light-color); /* Couleur de fond en attendant le chargement */
+}
+
+/* Corrections générales pour le contenu du projet */
+.project-content {
+    padding: 6rem 0;
+    background-color: white;
+    min-height: 50vh; /* Hauteur minimale pour éviter les sauts */
+}
+
+/* Correction pour les cartes de fonctionnalités */
+.feature-card {
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px; /* Hauteur minimale pour éviter les sauts */
+}
+
+/* Correction pour les éléments technologiques */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+}
+
+.tech-item {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Assure un bon affichage */
+}
+
+/* Correction pour la navigation entre projets */
+.project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--light-color);
+    min-height: 50px; /* Hauteur minimale */
+}
+
+/* Empêcher certaines animations qui pourraient causer des clignotements */
+.fade-in {
+    opacity: 1 !important; /* Force l'opacité à 1 */
+    transform: translateY(0) !important; /* Force la position initiale */
+    transition: none !important; /* Désactive les transitions */
+}
+
+/* Désactiver temporairement certaines animations */
+.thumbnail:hover, 
+.feature-card:hover,
+.tech-item:hover {
+    transform: none !important; /* Empêche les transformations au survol */
+    box-shadow: var(--shadow-md) !important; /* Conserve l'ombre standard */
+}
+
+/* Correction pour le sélecteur d'images */
+.thumbnail.active {
+    border: 3px solid var(--primary-color);
+}
